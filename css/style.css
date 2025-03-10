@@ -98,7 +98,6 @@ p {
     height: 1.6em;
 }
 
-
 aside {
     grid-area: menu;
     display: flex;
