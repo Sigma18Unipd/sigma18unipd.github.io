@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Figtree';
+    src:
+        url('../assets/fonts/Figtree.woff2') format('woff2'),
+        url('../assets/fonts/Figtree.woff') format('woff'),
+        url('../assets/fonts/Figtree.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 1 1000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree', sans-serif;
+    line-height: 170%;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-areas: "menu content";
+    height: 100vh;
+}
+
+main {
+    grid-area: content;
+    background: #eaebf3;
+    padding: 40px;
+    overflow-y: scroll;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+p {
+    font-size: 1em;
+    color: gray;
+    margin-bottom: 1rem;
+}
+
+.doubleContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.tripleContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+aside {
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 40px;
+    background-color: #FFF;
+}
+
+aside img {
+    width: 120px;
+}
+
+li {
+    list-style-type: none;
+    padding-bottom: 5px;
+}
+
+li a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.4em;
+}
+
+@media (max-width: 550px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas: "menu" "content";
+        overflow: scroll;
+    }
+
+    aside{
+        height: auto;
+        align-items: center;
+    }
+
+    main {
+        overflow: unset;
+    }
+
+    li {
+        text-align: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    .doubleContainer{
+        grid-template-columns: 1fr;
+    }
+
+    .tripleContainer{
+        grid-template-columns: 1fr;
+    }
+}
