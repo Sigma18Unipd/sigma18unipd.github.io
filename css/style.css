@@ -8,6 +8,13 @@
     font-weight: 1 1000;
 }
 
+:root {
+    --main-background-color: #ffffff;
+    --aside-background-color: #deeaf8;
+    --heading-color: black;
+    --main-paragraph-color: gray;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -21,13 +28,18 @@ body {
     grid-template-columns: 250px 1fr;
     grid-template-areas: "menu content";
     height: 100vh;
+    color: var(--heading-color);
 }
 
 main {
     grid-area: content;
-    background: #eaebf3;
+    background-color: var(--main-background-color);
     padding: 40px;
     overflow-y: scroll;
+}
+
+section {
+    margin-bottom: 1em;
 }
 
 h1 {
@@ -37,8 +49,13 @@ h1 {
 
 p {
     font-size: 1em;
-    color: gray;
-    margin-bottom: 1rem;
+    color: var(--main-paragraph-color);
+    margin-bottom: 0.5rem;
+}
+
+.centeredContainer{
+    align-items: center;
+    text-align: center;
 }
 
 .doubleContainer{
@@ -53,13 +70,42 @@ p {
     gap: 20px;
 }
 
+.accordionButton {
+    font-weight: 400;
+    font-size: 2em;
+    background-color: var(--main-background-color);
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 100%;
+    height: auto;
+    border: none;
+    text-align: left;
+    color: var(--heading-color);
+}
+
+.active, .accordionButton:hover {
+    background-color: var(--aside-background-color); 
+}
+
+.accordionContent {
+    display: none;
+    overflow: hidden;
+    padding: 20px;
+    border: 1px solid var(--aside-background-color);
+}
+
+#typingEffect{
+    height: 1.6em;
+}
+
+
 aside {
     grid-area: menu;
     display: flex;
     flex-direction: column;
     gap: 40px;
     padding: 40px 40px;
-    background-color: #FFF;
+    background-color: var(--aside-background-color);
 }
 
 aside img {
@@ -73,7 +119,7 @@ li {
 
 li a{
     text-decoration: none;
-    color: black;
+    color: var(--heading-color);
     font-size: 1.4em;
 }
 
@@ -105,5 +151,18 @@ li a{
 
     .tripleContainer{
         grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-background-color: #1e1e1e;
+        --aside-background-color: #2b2b2b;
+        --heading-color: #EEEEEE;
+        --main-paragraph-color: gray;
+    }
+
+    img {
+        filter: grayscale(100%) invert(100%);     
     }
 }
