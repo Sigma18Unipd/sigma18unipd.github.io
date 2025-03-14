@@ -160,12 +160,12 @@ p a:hover {
     background-size: cover;
 	cursor: pointer;	
     appearance: none;
-    transition: 1s;
+    transition: 1s ease-in-out;
 }
 
 #themeSelector:hover {
     transform: rotate(30deg);
-    transition: 1s;
+    transition: 1s ease-in-out;
 }
 
 #themeSelector:checked {
