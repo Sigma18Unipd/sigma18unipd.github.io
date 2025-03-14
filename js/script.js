@@ -1,3 +1,6 @@
+//-----------------------------------
+//-           Accordions            -
+//-----------------------------------
 var acc = document.getElementsByClassName("accordionButton");
 
 for (var i = 0; i < acc.length; i++) {
@@ -13,6 +16,10 @@ for (var i = 0; i < acc.length; i++) {
 }
 
 
+
+//-----------------------------------
+//-       Typing Animation          -
+//-----------------------------------
 var words = ["Innovazione...", "Tecnologia...", "Sviluppo...", "Crescita...", "Successo..."];
 var i = 0;
 var txtIndex = 0;
@@ -38,3 +45,34 @@ function typingEffect() {
 }
 
 typingEffect();
+
+
+
+//-----------------------------------
+//-         Theme Switcher          -
+//-----------------------------------
+if(localStorage.getItem('theme') == null){
+  if (window.matchMedia) {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      document.getElementById('themeSelector').checked = true;
+      localStorage.setItem('theme', "dark");
+      document.querySelector('body').classList.add("dark");
+    } else {
+      document.getElementById('themeSelector').checked = false;
+      localStorage.setItem('theme', "light");
+    }
+  }
+} else if(localStorage.getItem('theme') != "light") {
+  document.getElementById('themeSelector').checked = true;
+  document.querySelector('body').classList.add("dark");
+}
+
+document.getElementById('themeSelector').addEventListener("change", (e)=>{
+  if (document.getElementById('themeSelector').checked == true){
+    localStorage.setItem('theme', "dark");
+    document.querySelector('body').classList.add("dark");
+  } else {
+    localStorage.setItem('theme', "light");
+    document.querySelector('body').classList.remove("dark");
+  }
+});

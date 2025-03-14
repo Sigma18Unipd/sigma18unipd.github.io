@@ -38,6 +38,10 @@ main {
     overflow-y: scroll;
 }
 
+main ul a {
+    text-decoration: underline;
+}
+
 section {
     margin-bottom: 1em;
 }
@@ -51,6 +55,15 @@ p {
     font-size: 1em;
     color: var(--main-paragraph-color);
     margin-bottom: 0.5rem;
+}
+
+p a {
+    color: var(--main-paragraph-color);
+}
+
+p a:hover {
+    color: var(--heading-color);
+    transition: 0.1s linear;
 }
 
 .centeredContainer{
@@ -81,6 +94,8 @@ p {
     border: none;
     text-align: left;
     color: var(--heading-color);
+    border: 2px solid var(--aside-background-color);
+    text-align: center;
 }
 
 .active, .accordionButton:hover {
@@ -92,12 +107,71 @@ p {
     overflow: hidden;
     padding: 20px;
     border: 1px solid var(--aside-background-color);
+    font-size: 0.9em;
 }
 
 #typingEffect{
     height: 1.6em;
 }
 
+.cardContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.personCard {
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 10px;
+    grid-template-areas: "img content";
+}
+
+.personCard img {
+    grid-area: img;
+    width: 100%;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.personCard div {
+    grid-area: content;
+}
+
+
+.footerContainer {
+    align-items: center;
+    text-align: center;
+}
+
+.footerContainer p {
+    font-size: 1em;
+    color: var(--heading-color);
+}
+
+#themeSelector {
+    content: url("../assets/img/Moon.svg");
+    width: 30px;
+	height: 30px;
+    background-size: cover;
+	cursor: pointer;	
+    appearance: none;
+    transition: 1s;
+}
+
+#themeSelector:hover {
+    transform: rotate(30deg);
+    transition: 1s;
+}
+
+#themeSelector:checked {
+    content: url("../assets/img/Sun.svg");
+    appearance: none;
+}
 
 aside {
     grid-area: menu;
@@ -123,7 +197,12 @@ li a{
     font-size: 1.4em;
 }
 
-@media (max-width: 550px) {
+li a:hover{
+    color: var(--main-paragraph-color);
+    transition: 0.15s linear;
+}
+
+@media (max-width: 600px) {
     body {
         grid-template-columns: 1fr;
         grid-template-areas: "menu" "content";
@@ -139,7 +218,11 @@ li a{
         overflow: unset;
     }
 
-    li {
+    #themeSelector {
+        align-self: center;
+    }
+
+    aside li {
         text-align: center;
     }
 }
@@ -154,15 +237,23 @@ li a{
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --main-background-color: #1e1e1e;
-        --aside-background-color: #2b2b2b;
-        --heading-color: #EEEEEE;
-        --main-paragraph-color: gray;
+
+
+
+/*-----------------------------------*/
+/*-            Dark Mode            -*/
+/*-----------------------------------*/
+.dark {
+    --main-background-color: #1e1e1e;
+    --aside-background-color: #2b2b2b;
+    --heading-color: #EEEEEE;
+    --main-paragraph-color: gray;
+
+    aside img {
+        filter: grayscale(100%) invert(100%);     
     }
 
-    img {
+    main > .centeredContainer > img {
         filter: grayscale(100%) invert(100%);     
     }
 }
